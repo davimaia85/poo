@@ -17,6 +17,8 @@ INSERT INTO tb_alunos
 (nome, matricula, email, status, genero, dataNascimento, cpf)
 VALUES
 ('maria', '1223456', 'maria@email.com', true, 'feminino', '2001-09-04', '12345678900'),
-('ze', '1223456', 'ze@email.com', true, 'feminino', '2001-08-24', '12345678900'),
-('antoin', '1223456', 'antoin@email.com', true, 'feminino', '2001-05-15', '12345678900'),
+('ze', '1223457', 'ze@email.com', true, 'feminino', '2001-08-24', '12345678901'),
+('antoin', '1223458', 'antoin@email.com', true, 'feminino', '2001-05-15', '12345678902')
 ;
+
+SELECT * FROM tb_alunos;
