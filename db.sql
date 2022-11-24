@@ -22,3 +22,22 @@ VALUES
 ;
 
 SELECT * FROM tb_alunos;
+
+CREATE TABLE tb_professores (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    endereco VARCHAR(100) UNIQUE NOT NULL,
+    formacao VARCHAR(100) UNIQUE NOT NULL,
+    status TINYINT NOT NULL
+);
+
+INSERT INTO tb_professores
+(nome, cpf, endereco, formacao, status)
+VALUES
+('lorao', '12345678900', 'ruas dos loiros', 'enrolador de codigo', true),
+('allan cahorro e chuchu', '12345678901', 'rua vira latas', 'criados de cachorros e chuchus', false),
+('adirano', '12345678902', 'rua crossfit', 'fazedor de rapadura', true)
+;
+
+SELECT * FROM tb_professores;
