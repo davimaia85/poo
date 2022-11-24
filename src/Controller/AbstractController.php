@@ -13,4 +13,9 @@
                include_once "../views/{$view}.phtml";
                include_once '../views/template/footer.phtml';
             }
+
+            public function redirect(string $local):void
+            {
+               header('location: '. $local);
+            }
          }

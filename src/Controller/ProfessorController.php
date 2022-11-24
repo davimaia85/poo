@@ -4,34 +4,37 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class ProfessorController
+use App\Repository\ProfessorRepository;
+
+class ProfessorController extends AbstractController
 {
     public function listar(): void
     {
-        $this->renderizar('listar');
+        $rep = new ProfessorRepository();
+        $professores = $rep->buscarTodos();
+        $this->render('professor/listar', [
+            'professores' => $professores,
+        ]);
     }
 
     public function cadastrar(): void
     {
-        $this->renderizar('cadastrar');
+        $this->render('professor/cadastrar');
     }
 
     public function excluir(): void
     {
-        $this->renderizar('excluir');
+        $id = $_GET['id'];
+        $rep = new ProfessorRepository();
+        $rep->excluir($id);
+       
+        $this->redirect("/professores/listar");
+        
     }
 
     public function editar(): void
     {
-        $this->renderizar('editar');
+        $this->render('professor/editar');
     }
 
-    public function renderizar(string $arquivo, ?array $dados = null)
-    {
-        include "../Views/template/header.phtml";
-        include "../Views/professor/{$arquivo}.phtml";
-        $dados;
-
-        include "../Views/template/footer.phtml";
-    }
 }

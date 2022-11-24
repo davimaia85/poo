@@ -20,17 +20,24 @@
         </thead>
         <tbody>
             <?php
-                foreach ($alunos as $aluno){
-                    echo "
-                        <tr>
-                            <td>{$aluno->id}</td>
-                            <td>{$aluno->nome}</td>
-                            <td>{$aluno->matricula}</td>
-                            <td>{$aluno->cpf}</td>
-                            <td>{$aluno->email}</td>
-                        </tr>
-                    ";
+                if(isset($alunos) && sizeOf($alunos) > 0){
+                    foreach ($alunos as $aluno){
+                        echo "
+                            <tr>
+                                <td>{$aluno->id}</td>
+                                <td>{$aluno->nome}</td>
+                                <td>{$aluno->matricula}</td>
+                                <td>{$aluno->cpf}</td>
+                                <td>{$aluno->email}</td>
+                                <td>
+                                    <a href='professor/editar?{$alunos}' class='btn btn-outline-warning'>EDITAR</a>
+                                    <button class='btn btn-danger'>EXCLUIR</button>
+                                </td>
+                            </tr>
+                        ";
+                    }
                 }
+               
             ?>
         </tbody>
 

@@ -4,7 +4,7 @@
     </h1>
 
     <div>
-        <a href="/alunos/novo" class="btn btn-outline-dark">DADOS DO PROFESSOR</a>
+        <a href="/professores/novo" class="btn btn-outline-dark">DADOS DO PROFESSOR</a>
     </div>
 
     <table class="table table-striped table-hover mt-4">
@@ -12,12 +12,34 @@
             <tr>
                 <th>#ID</th>
                 <th>Nome</th>
-                <th>Matrícula</th>
+                <th>Endereço</th>
+                <th>Formação</th>
                 <th>CPF</th>
-                <th>Email</th>
                 <th>Ações</th>
             </tr>
         </thead>
+        <tbody>
+            <?php
+            if(isset($professores) && sizeOf($professores) > 0){
+                foreach ($professores as $professor){
+                    echo "
+                        <tr>
+                            <td>{$professor->id}</td>
+                            <td>{$professor->nome}</td>
+                            <td>{$professor->endereco}</td>
+                            <td>{$professor->formacao}</td>
+                            <td>{$professor->cpf}</td>
+                            <td>
+                                <a href='professores/editar?id={$professores->id}' class='btn btn-outline-warning'>EDITAR</a>
+                                <a href='professores/excluir?id={$professores->id}' class='btn btn-danger'>EXCLUIR</a>
+                            </td>
+                        </tr>
+                    ";
+                }
+            }
+               
+            ?>
+        </tbody>
 
     </table>
 
