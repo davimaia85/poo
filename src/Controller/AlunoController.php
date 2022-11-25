@@ -57,12 +57,21 @@ class AlunoController extends AbstractController
 
     public function excluir(): void
     {
-        $this->render('aluno/excluir');
+        //$this->render('aluno/excluir');
+        $id = $_GET['id'];
+        $rep = new AlunoRepository();
+        $rep->excluir($id);
+       
+        $this->redirect('/alunos/listar');
     }
 
     public function editar(): void
     {
-        $this->render('aluno/editar');
+        //$this->render('aluno/editar');
+        $id = $_GET['id'];
+        $rep = new AlunoRepository();
+        $rep->excluir($id);
+        $this->redirect('/alunos/listar');
     }
     public function relatorio(): void
     {

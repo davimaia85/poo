@@ -28,7 +28,7 @@ class ProfessorController extends AbstractController
         $rep = new ProfessorRepository();
         $rep->excluir($id);
        
-        $this->redirect("/professores/listar");
+        $this->redirect('/professores/listar');
         
     }
 
