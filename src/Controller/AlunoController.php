@@ -67,12 +67,43 @@ class AlunoController extends AbstractController
 
     public function editar(): void
     {
-        //$this->render('aluno/editar');
-        $id = $_GET['id'];
+        if (true === empty($_POST)){
+
+            $id = $_GET['id'];
+            $rep = new AlunoRepository();
+            $aluno = $rep->buscarUm($id);
+            $this->render('aluno/editar', [$aluno]);
+        }
+
+        $aluno = new Aluno();
+        $aluno->nome = $_POST['nome'];
+        $aluno->dataNascimento = $_POST['nascimento'];
+        $aluno->cpf = $_POST['cpf'];
+        $aluno->email = $_POST['email'];
+        $aluno->genero = $_POST['genero'];
+
         $rep = new AlunoRepository();
-        $rep->excluir($id);
-        $this->redirect('/alunos/listar');
+
+        try { 
+            $rep->inserir($aluno);
+        }catch (Exception $exception){
+            if(true === str_contains($exception->getMessage(), 'cpf')){
+                die('CPF já existe');
+            }
+            if(true === str_contains($exception->getMessage(), 'email')){
+                die('Este email já existe');
+            }
+
+            die('Vixe, deu erro!');
+           
+        }
+
+        $rep->inserir($aluno); 
+
+        $this->redirect('/aluno/listar');
+       
     }
+
     public function relatorio(): void
     {
         $hoje = date ('d/m/Y');
