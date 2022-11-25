@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Aluno;
 use App\Repository\AlunoRepository;
+use Dompdf\Dompdf;
 use Exception;
 
 class AlunoController extends AbstractController
@@ -62,4 +64,20 @@ class AlunoController extends AbstractController
     {
         $this->render('aluno/editar');
     }
+    public function relatorio(): void
+    {
+        $hoje = date ('d/m/Y');
+        $design = "
+                <h1>Relatorio de Alunos</h1>
+                <hr>
+                <em>Gerado em {$hoje}</em>
+        ";
+
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->loadHtml($design);
+        $dompdf->render();
+        $dompdf->stream();
+    }
+    
 }
