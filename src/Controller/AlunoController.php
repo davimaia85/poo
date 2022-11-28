@@ -117,7 +117,8 @@ class AlunoController extends AbstractController
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->loadHtml($design);
         $dompdf->render();
-        $dompdf->stream();
+        $dompdf->stream('relatorio-alunos.pdf', ['Attachment' => 0,
+        ]);
     }
     
 }
