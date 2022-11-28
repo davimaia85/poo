@@ -41,3 +41,22 @@ VALUES
 ;
 
 SELECT * FROM tb_professores;
+
+CREATE TABLE tb_user (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) UNIQUE NOT NULL,
+    profile VARCHAR(255) UNIQUE NOT NULL,
+  
+);
+
+-- INSERT INTO tb_user
+-- (name, email, password, profile)
+-- VALUES
+-- ('loraoDC', 'lorao@email.com', '', 'enrolador de codigo', true),
+-- ('allan345', 'allan@email.com', 'rua vira latas', 'criados de cachorros e chuchus', false),
+-- ('adrianoDaRapasiada', 'adriano@email.com', 'rua crossfit', 'fazedor de rapadura', true)
+-- ;
+
+SELECT * FROM tb_user;

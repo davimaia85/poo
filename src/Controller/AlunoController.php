@@ -10,11 +10,17 @@ use Dompdf\Dompdf;
 use Exception;
 
 class AlunoController extends AbstractController
-{
+{   
+
+    private function AlunoRepository $repository;
+    {
+        $this->repository new AlunoRepository();
+    }
+
     public function listar(): void
     {
-        $rep = new AlunoRepository();
-        $alunos = $rep->buscarTodos();
+        //$rep = new AlunoRepository();
+        $alunos = $this->repository->buscarTodos();
         $this->render('aluno/listar', [
             'alunos' => $alunos,
         ]);
@@ -34,10 +40,8 @@ class AlunoController extends AbstractController
         $aluno->email = $_POST['email'];
         $aluno->genero = $_POST['genero'];
 
-        $rep = new AlunoRepository();
-
         try { 
-            $rep->inserir($aluno);
+            $this->repository->inserir($aluno);
         }catch (Exception $exception){
             if(true === str_contains($exception->getMessage(), 'cpf')){
                 die('CPF já existe');
@@ -50,7 +54,7 @@ class AlunoController extends AbstractController
            
         }
 
-        $rep->inserir($aluno); 
+        $this->repository->inserir($aluno); 
 
         $this->redirect('/aluno/listar');
     }
@@ -59,8 +63,8 @@ class AlunoController extends AbstractController
     {
         //$this->render('aluno/excluir');
         $id = $_GET['id'];
-        $rep = new AlunoRepository();
-        $rep->excluir($id);
+
+        $this->repository->excluir($id);
        
         $this->redirect('/alunos/listar');
     }
@@ -70,8 +74,8 @@ class AlunoController extends AbstractController
         if (true === empty($_POST)){
 
             $id = $_GET['id'];
-            $rep = new AlunoRepository();
-            $aluno = $rep->buscarUm($id);
+            //$rep = new AlunoRepository();
+            $aluno =$this->repository->buscarUm($id);
             $this->render('aluno/editar', [$aluno]);
         }
 
@@ -82,10 +86,10 @@ class AlunoController extends AbstractController
         $aluno->email = $_POST['email'];
         $aluno->genero = $_POST['genero'];
 
-        $rep = new AlunoRepository();
+        //$rep = new AlunoRepository();
 
         try { 
-            $rep->inserir($aluno);
+            $this->repository->inserir($aluno);
         }catch (Exception $exception){
             if(true === str_contains($exception->getMessage(), 'cpf')){
                 die('CPF já existe');
@@ -98,7 +102,7 @@ class AlunoController extends AbstractController
            
         }
 
-        $rep->inserir($aluno); 
+        $this->repository->inserir($aluno); 
 
         $this->redirect('/aluno/listar');
        
@@ -107,10 +111,37 @@ class AlunoController extends AbstractController
     public function relatorio(): void
     {
         $hoje = date ('d/m/Y');
+        $alunos = $this->repository->buscarTodos();
         $design = "
                 <h1>Relatorio de Alunos</h1>
                 <hr>
                 <em>Gerado em {$hoje}</em>
+
+                <table border='1' width='100%' style='margin-top: 30px;'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{$alunos[0]->id}</td>
+                        <td>{$alunos[0]->nome}</td>
+                    </tr>
+                    <tr>
+                        <td>{$alunos[1]->id}</td>
+                        <td>{$alunos[1]->nome}</td>
+                    </tr>
+                    <tr>
+                        <td>{$alunos[2]->id}</td>
+                        <td>{$alunos[2]->nome}</td>
+                    </tr>
+                    
+                </tbody>
+                   
+                </table>
+
         ";
 
         $dompdf = new Dompdf();

@@ -20,10 +20,20 @@ $rotas = [
     '/alunos/editar' => criarRota(AlunoController::class, 'editar'),
     '/alunos/excluir' => criarRota(AlunoController::class, 'excluir'),
     '/alunos/relatorio' => criarRota(AlunoController::class, 'relatorio'),
+    
+    '/usuarios/listar'=> criarRota(UserController::class, 'list'),
+    '/usuarios/novo'=> criarRota(UserController::class, 'add'),
+    //'/usuarios/editar'=> criarRota(UserController::class, 'list'),
+    //'/usuarios/excluir'=> criarRota(UserController::class, 'list'),
+    
+    '/usuarios/excluir'=> criarRota(UserController::class, 'list'),
+    '/usuarios/excluir'=> criarRota(UserController::class, 'list'),
+
     '/cursos/listar' => criarRota(CursoController::class, 'listar'),
     '/cursos/novo' => criarRota(CursoController::class, 'cadastrar'),
     '/cursos/editar' => criarRota(CursoController::class, 'editar'),
     '/cursos/excluir' => criarRota(CursoController::class, 'excluir'),
+    
     '/professores/listar' => criarRota(ProfessorController::class, 'listar'),
     '/professores/novo' => criarRota(ProfessorController::class, 'cadastrar'),
     '/professores/editar' => criarRota(ProfessorController::class, 'editar'),

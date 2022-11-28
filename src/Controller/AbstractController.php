@@ -5,13 +5,16 @@
 
     abstract class AbstractController
          {
-            public function render(string $view, ?array $dados = null): void
+            public function render(string $view, ?array $dados = null, bool $navbar=true): void
             {
                if(isset($dados)){
                   extract($dados);
                }
                
                include_once '../views/template/header.phtml';
+
+               $navbar === true && include_once '../views/template/menu.phtml';
+
                include_once '../views/template/menu.phtml';
                include_once "../views/{$view}.phtml";
                include_once '../views/template/footer.phtml';
