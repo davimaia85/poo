@@ -4,7 +4,7 @@
     </h1>
 
     <div>
-        <a href="/alunos/novo" class="btn btn-outline-dark">NOVO USUARIO</a>
+        <a href="/usuarios/novo" class="btn btn-outline-dark">NOVO USUARIO</a>
         <a href="/alunos/relatorio" target="_blank" class="btn btn-outline-dark">GERAR PDF</a>
     </div>
 
@@ -20,24 +20,21 @@
         </thead>
         <tbody>
             <?php
-                if(isset($alunos) && sizeOf($alunos) > 0){
-                    foreach ($alunos as $aluno){
-                        echo "
-                            <tr>
-                                <td>{$aluno->id}</td>
-                                <td>{$aluno->nome}</td>
-                                <td>{$aluno->matricula}</td>
-                                <td>{$aluno->cpf}</td>
-                                <td>{$aluno->email}</td>
-                                <td>
-                                <a href='/alunos/editar?id={$aluno->id}' class='btn btn-outline-warning btn-sm'>Editar</a>
-                                <a href='/alunos/excluir?id={$aluno->id}' class='btn btn-outline-danger btn-sm'>Excluir</a>
-                                </td>
-                            </tr>
-                        ";
-                    }
-                }
-               
+                foreach ($users ?? [] as $user){
+                    echo "
+                        <tr>
+                            <td>{$user->id}</td>
+                            <td>{$user->nome}</td>
+                            <td>{$user->matricula}</td>
+                            <td>{$user->cpf}</td>
+                            <td>{$user->email}</td>
+                            <td>
+                            <a href='/usuarios/editar?id={$user->id}' class='btn btn-outline-warning btn-sm'>Editar</a>
+                            <a href='/usuarios/excluir?id={$user->id}' class='btn btn-outline-danger btn-sm'>Excluir</a>
+                            </td>
+                        </tr>
+                    ";
+                } 
             ?>
         </tbody>
 
