@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\UserRepository;
+namespace App\Controller;
 
 use App\Model\User;
 use App\Controller\AbstractController;
@@ -12,14 +12,18 @@ class UserController extends AbstractController
 {
     private UserRepository $repository;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->repository = new UserRepository();
     }
 
     public function list():void
     {
-        $users = $this->repository;
+        $users = $this->repository->findAll();
+
+        $this->render('user/list', [
+            'users' => $users,
+        ]);
     }
 
     public function add():void
