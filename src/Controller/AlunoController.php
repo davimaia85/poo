@@ -21,7 +21,9 @@ class AlunoController extends AbstractController
 
     public function listar(): void
     {
-        //$rep = new AlunoRepository();
+        if (UseSecurity::isLogged() === false){
+            die('Erro, precisa estar logado');
+        }
         $alunos = $this->repository->buscarTodos();
         $this->render('aluno/listar', [
             'alunos' => $alunos,

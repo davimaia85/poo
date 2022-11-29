@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Security\UserSecurity;
 
 class AuthController extends AbstractController
 {
@@ -32,7 +33,7 @@ class AuthController extends AbstractController
                 die('Senha incorreta');
             }
 
-            die('Bem vindo!');
+            UserSecurity::connect($user);
         
             return;
         }

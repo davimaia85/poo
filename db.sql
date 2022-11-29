@@ -59,4 +59,12 @@ VALUES
 ('adrianoDaRapasiada', 'adriano@email.com', '12347', 'fazedor de rapadura')
 ;
 
+INSERT INTO tb_user
+(name, email, password, profile)
+VALUES
+('maria', 'maria@email.com','12348', 'legal'),
+('ze', 'ze@email.com',  '12349', 'gente fina'),
+('antoin', 'antoin@email.com', '123410', 'invocado')
+;
+
 SELECT * FROM tb_user;
