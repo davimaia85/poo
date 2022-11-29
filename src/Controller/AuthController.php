@@ -42,6 +42,7 @@ class AuthController extends AbstractController
     
     public function logout():void
     {
-        $this->render('auth/logout');
+        UserSecurity::disconnect();
+        $this->redirect('/login');
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Security\UserSecurity;
 use App\Model\Aluno;
 use App\Repository\AlunoRepository;
 use Dompdf\Dompdf;
@@ -21,7 +22,7 @@ class AlunoController extends AbstractController
 
     public function listar(): void
     {
-        if (UseSecurity::isLogged() === false){
+        if (UserSecurity::isLogged() === false){
             die('Erro, precisa estar logado');
         }
         $alunos = $this->repository->buscarTodos();
