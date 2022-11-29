@@ -18,10 +18,8 @@ abstract class UserSecurity
     }
     public static function connect(User $user): void
     {
-       
         $user->password = '';
         $_SESSION['user_escola'] = $user;
- 
     }
 
     public static function getUser(): User

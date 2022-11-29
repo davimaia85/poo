@@ -5,36 +5,37 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Connection\DatabaseConnection;
-use App\Model\Professor;
-
+use App\Model\Categoria;
 use PDO;
 
-class ProfessorRepository implements RepositoryInterface
+class CategoriaRepository implements RepositoryInterface
 {
-    public const TABLE = 'tb_professores';
+    public const TABLE = "tb_categorias";
+
     public function buscarTodos(): iterable
     {
         $conexao = DatabaseConnection::abrirConexao();
-        $sql = 'SELECT * FROM ' . self::TABLE;
-
+        $sql = "SELECT * FROM ".self::TABLE;
         $query = $conexao->query($sql);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_CLASS, Professor::class);
-        
+        return $query->fetchAll(PDO::FETCH_CLASS, Categoria::class);
     }
-   
+
     public function buscarUm(string $id): ?object
     {
-        return new \stdClass;
+        return new \stdClass();
     }
+
     public function inserir(object $dados): object
     {
         return $dados;
-    }
-    public function atualizar(object $novosdados, string $id ): object
+    } 
+
+    public function atualizar(object $dados, string $id): object
     {
-        return $novosdados;
+        return $dados;
     }
+
     public function excluir(string $id): void
     {
         $conexao = DatabaseConnection::abrirConexao();
