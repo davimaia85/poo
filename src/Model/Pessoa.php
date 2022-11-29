@@ -7,8 +7,7 @@
          {
             public string $nome;
             public string $cpf;
-          
-       
+         
          }
         
         
