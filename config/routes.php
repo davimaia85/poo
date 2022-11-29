@@ -1,9 +1,11 @@
 <?php
 
 use App\Controller\AlunoController;
+use App\Controller\AuthController;
 use App\Controller\ProfessorController;
 use App\Controller\CursoController;
 use App\Controller\SiteController;
+use App\Controller\UserController;
 
 function criarRota(string $controllerNome, string $methodNome): array
 {
@@ -26,8 +28,8 @@ $rotas = [
     //'/usuarios/editar'=> criarRota(UserController::class, 'list'),
     //'/usuarios/excluir'=> criarRota(UserController::class, 'list'),
     
-    '/usuarios/excluir'=> criarRota(UserController::class, 'list'),
-    '/usuarios/excluir'=> criarRota(UserController::class, 'list'),
+    '/login'=> criarRota(AuthController::class, 'login'),
+    '/desconectar'=> criarRota(AuthController::class, 'logout'),
 
     '/cursos/listar' => criarRota(CursoController::class, 'listar'),
     '/cursos/novo' => criarRota(CursoController::class, 'cadastrar'),
