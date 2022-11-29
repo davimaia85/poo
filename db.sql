@@ -68,3 +68,31 @@ VALUES
 ;
 
 SELECT * FROM tb_user;
+
+CREATE TABLE tb_cursos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    cargaHoraria VARCHAR(50) NOT NULL,
+    descricao VARCHAR(100) UNIQUE NOT NULL,
+    status TINYINT NOT NULL,
+    categoria_id INT NOT NULL,
+    FOREIGN KEY (categoria_id) REFERENCES tb_categorias(id)
+);
+
+CREATE TABLE tb_categorias (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL
+);
+
+INSERT INTO tb_categorias (nome) VALUES ('Profissionalizante'), ('Tecnico'), ('Graduação');
+
+INSERT INTO tb_cursos
+(nome, cargaHoraria, descricao, status, categoria_id)
+VALUES
+('Domador de elefante PHP','200','Desenrolar os bem bolados',1,1),
+('Javasprict','160','Copiar e colar coisas',1,2),
+('HTML e CSS','100','Construir páginas como um pedreiro da web',1,3)
+;
+
+SELECT * FROM tb_cursos INNER JOIN tb_categorias ON tb_cursos.categoria_id = tb_categorias.id;
+
