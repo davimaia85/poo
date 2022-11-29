@@ -17,7 +17,7 @@
 
                $navbar === true && include_once '../views/template/menu.phtml';
 
-               include_once '../views/template/menu.phtml';
+               //include_once '../views/template/menu.phtml';
                include_once "../views/{$view}.phtml";
                include_once '../views/template/footer.phtml';
             }

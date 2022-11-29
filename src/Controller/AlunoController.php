@@ -25,7 +25,7 @@ class AlunoController extends AbstractController
         $this->checkLogin();
         if (UserSecurity::isLogged() === false){
             die('Erro, precisa estar logado');
-        }
+       }
         $alunos = $this->repository->buscarTodos();
         $this->render('aluno/listar', [
             'alunos' => $alunos,
@@ -34,7 +34,7 @@ class AlunoController extends AbstractController
 
     public function cadastrar(): void
     {
-        $this->checkLogin();
+        
         if (true === empty($_POST)){
             $this->render('aluno/cadastrar');
             return;
@@ -61,12 +61,12 @@ class AlunoController extends AbstractController
            
         }
 
-        $this->redirect('/aluno/listar');
+        $this->redirect('/alunos/listar');
     }
 
     public function excluir(): void
     {
-        $this->checkLogin();
+        //$this->checkLogin();
         $id = $_GET['id'];
     
         $this->repository->excluir($id);
@@ -104,7 +104,7 @@ class AlunoController extends AbstractController
             
             }
 
-            $this->redirect('/aluno/listar');
+            $this->redirect('/alunos/listar');
         }
        
     }
@@ -114,6 +114,26 @@ class AlunoController extends AbstractController
         $this->checkLogin();
         $hoje = date ('d/m/Y');
         $alunos = $this->repository->buscarTodos();
+        
+        foreach($alunos as $cadaAluno){
+           
+            if($cadaAluno->status == 1){
+                $alunoAtivo = 'Matriculado';
+            }
+            $dados .= "
+                <tr>
+                    <td>{$cadaAluno->id}</td>
+                    <td>{$cadaAluno->nome}</td>
+                    <td>{$cadaAluno->cpf}</td>
+                    <td>{$cadaAluno->matricula}</td>
+                    <td>{$cadaAluno->email}</td>
+                    <td>{$alunoAtivo}</td>
+                    <td>{$cadaAluno->genero}</td>
+                    <td>{$dataNascimento}</td>
+                </tr>
+            ";
+        }
+        
         $design = "
                 <h1>Relatorio de Alunos</h1>
                 <hr>
@@ -124,23 +144,19 @@ class AlunoController extends AbstractController
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Matricula</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Gênero</th>
+                        <th>Data de Nascimento</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>{$alunos[0]->id}</td>
-                        <td>{$alunos[0]->nome}</td>
-                    </tr>
-                    <tr>
-                        <td>{$alunos[1]->id}</td>
-                        <td>{$alunos[1]->nome}</td>
-                    </tr>
-                    <tr>
-                        <td>{$alunos[2]->id}</td>
-                        <td>{$alunos[2]->nome}</td>
-                    </tr>
-                    
-                </tbody>
+                    <tbody>
+                        .
+                        $dados
+                        .
+                    </tbody>
                    
                 </table>
 

@@ -20,9 +20,9 @@ if (false === isset($rotas[$rota])) {
 $controller = $rotas[$rota]['controller'];
 $method = $rotas[$rota]['method'];
 
-if ($controller != '/'){
-    if(App\Security\UserSecurity::isLogged()===false){
+//if ($controller != '/'){
+  //  if(App\Security\UserSecurity::isLogged()===false){
         (new $controller)->$method();
-    }
-}
+   // }
+//}
 
