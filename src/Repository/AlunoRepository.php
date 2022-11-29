@@ -29,6 +29,7 @@ class AlunoRepository implements RepositoryInterface
         return $query->fetchAll(PDO::FETCH_CLASS, Aluno::class);
         
     }
+    
     public function buscarUm(string $id): object
     {
         $sql = "SELECT * FROM " .self::TABLE." WHERE id = '{$id}'"; 
@@ -36,6 +37,7 @@ class AlunoRepository implements RepositoryInterface
         $query->execute();
         return $query->fetchObject(Aluno::class);
     }
+    
     public function inserir(object $dados): object
     {
         $matricula = date('Ymd') . substr($dados->cpf, -2);
@@ -43,10 +45,24 @@ class AlunoRepository implements RepositoryInterface
         $this->pdo->query($sql);
         return $dados;
     }
+    
     public function atualizar(object $novosdados, string $id ): object
     {
-        return $novosdados;
+        $sql = "UPDATE " . self::TABLE . 
+            " SET 
+                nome='{$novosDados->nome}',
+                email='{$novosDados->email}',
+                cpf='{$novosDados->cpf}',
+                dataNascimento='{$novosDados->dataNascimento}',
+                genero='{$novosDados->genero}' 
+            WHERE id = '{$id}';";
+
+        $this->pdo->query($sql);
+
+        return $novosDados;
+        
     }
+    
     public function excluir(string $id): void
     {
         $sql= "DELETE FROM " . self::TABLE." WHERE id = '{$id}'";
