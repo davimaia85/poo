@@ -1,6 +1,6 @@
 <h2>Instruções</h2>
-<hr>
 
+<hr>
 <h3>Descrição</h3>
 
 Esta aplicação faz a gestão dos elementos que compõe o controle escolar, onde é possível cadastrar, atualizar, excluir e listar os alunos, os professores e os cursos que a escola dispõe. 
