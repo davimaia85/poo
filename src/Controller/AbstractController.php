@@ -3,6 +3,8 @@
 
     namespace App\Controller;
 
+    use App\Security\UserSecurity;
+
     abstract class AbstractController
          {
             public function render(string $view, ?array $dados = null, bool $navbar=true): void
@@ -24,4 +26,11 @@
             {
                header('location: '. $local);
             }
+            public function checkLogin()
+            {
+              if(UserSecurity::isLogged() === false){
+                  $this->redirect('/login');
+              }
+            }
+           
          }
