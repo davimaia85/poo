@@ -38,6 +38,8 @@ class AuthController extends AbstractController
             return;
         }
 
+        $this->render('auth/login', navbar: false);
+
     }
     
     public function logout():void
