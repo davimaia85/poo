@@ -25,6 +25,15 @@ class AuthController extends AbstractController
 
             $user = $this->userRepository->findOneByEmail($email);
 
+            if(false === $user){
+                die('Email não existe');
+            }
+            if(false === password_verify($password, $user->password)){
+                die('Senha incorreta');
+            }
+
+            die('Bem vindo!');
+        
             return;
         }
 

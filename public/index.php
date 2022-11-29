@@ -3,6 +3,7 @@
 use App\Connection\DatabaseConnection;
 
 include '../vendor/autoload.php';
+session_start();
 include '../config/database.php';
 
 

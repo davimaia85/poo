@@ -51,12 +51,12 @@ CREATE TABLE tb_user (
   
 );
 
--- INSERT INTO tb_user
--- (name, email, password, profile)
--- VALUES
--- ('loraoDC', 'lorao@email.com', '', 'enrolador de codigo', true),
--- ('allan345', 'allan@email.com', 'rua vira latas', 'criados de cachorros e chuchus', false),
--- ('adrianoDaRapasiada', 'adriano@email.com', 'rua crossfit', 'fazedor de rapadura', true)
--- ;
+INSERT INTO tb_user
+(name, email, password, profile)
+VALUES
+('loraoDC', 'lorao@email.com', '12345', 'enrolador de codigo'),
+('allan345', 'allan@email.com', '12346', 'criados de cachorros e chuchus'),
+('adrianoDaRapasiada', 'adriano@email.com', '12347', 'fazedor de rapadura')
+;
 
 SELECT * FROM tb_user;
