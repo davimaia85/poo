@@ -19,7 +19,15 @@ class AuthController extends AbstractController
 
     public function login():void
     {
-        $this->render('auth/login', navbar: false);
+        if(false === empty($_POST)){
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = $this->userRepository->findOneByEmail($email);
+
+            return;
+        }
+
     }
     
     public function logout():void
