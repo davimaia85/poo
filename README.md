@@ -44,7 +44,7 @@ Esta aplicação faz a gestão dos elementos que compõe o controle escolar, ond
         CREATE DATABASE db_escola
     ```
 
-8- Dentro do cliente do banco de dados, copie e cole o conteúdo dop arquivo **db.sql** e execute;
+8- Dentro do cliente do banco de dados, copie e cole o conteúdo do arquivo **db.sql** e execute;
     
     - certifique-se que as tabelas forma criadas executando o comando:
     ```sql
@@ -52,13 +52,13 @@ Esta aplicação faz a gestão dos elementos que compõe o controle escolar, ond
     ```
     - exibe a lista de tabelas
 
-9-Cofigurar as credenciais de acesso: 
+9-Configurar as credenciais de acesso: 
     
     - no arquivo **/config/database.php** e edite as credenciais do seu usuário do banco de dados
 
 ### Criar o primeiro usuário de acesso
 
-1- Dentro do diretório da aplicação, execute o comando `php config/create-admin.php`, para gerar o usuário com as credeniciais:
+1- Dentro do diretório da aplicação, execute o comando `php config/create-admin.php`, para gerar o usuário com as credenciais:
 | NOME | EMAIL | SENHA |
 | - | - | - |
 | Administrador | admin@admin.com | 123456 |
