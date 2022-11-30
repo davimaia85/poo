@@ -1,4 +1,4 @@
-<h2>Instruções</h2>
+<h1>Instruções</h1>
 <hr>
 <h3>Descrição</h3>
 
