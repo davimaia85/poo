@@ -1,6 +1,6 @@
-#Instruções Crud Escola#
+# Instruções Crud Escola
 
-###Descrição
+### Descrição
 
 Aplicação Web do tipo monolítica criada com:
 - PHP para o backend, ^7.4
@@ -8,7 +8,7 @@ Aplicação Web do tipo monolítica criada com:
 - MySQL/ MariaDB para o banco de dados
 Esta aplicação faz a gestão dos elementos que compõe o controle escolar, onde é possível cadastrar, atualizar, excluir e listar os alunos, os professores e os cursos que a escola dispõe. 
 
-###Funcionalidades
+### Funcionalidades
 
 - CRUD de Alunos
 - CRUD de Professores
@@ -16,7 +16,7 @@ Esta aplicação faz a gestão dos elementos que compõe o controle escolar, ond
 - CRUD de Categorias
 - CRUD de Usuários
 
-###Iniciar
+### Iniciar
 
 1- Certifique-se que seu computador tem os softwares:
 
@@ -56,14 +56,14 @@ Esta aplicação faz a gestão dos elementos que compõe o controle escolar, ond
     
     - no arquivo **/config/database.php** e edite as credenciais do seu usuário do banco de dados
 
-###Criar o primeiro usuário de acesso
+### Criar o primeiro usuário de acesso
 
 1- Dentro do diretório da aplicação, execute o comando `php config/create-admin.php`, para gerar o usuário com as credeniciais:
 | NOME | EMAIL | SENHA |
 | - | - | - |
 | Administrador | admin@admin.com | 123456 |
 
-###Executar a aplicação
+### Executar a aplicação
 
 1- Para executar e testar a aplicação, execute no terminal: `php -S localhost:8000 -t public`;
 
