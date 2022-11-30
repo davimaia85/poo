@@ -1,5 +1,5 @@
 <?php
-
+use App\Controller\API\AlunoApiController;
 use App\Controller\AlunoController;
 use App\Controller\AuthController;
 use App\Controller\ProfessorController;
@@ -40,6 +40,12 @@ $rotas = [
     '/professores/novo' => criarRota(ProfessorController::class, 'cadastrar'),
     '/professores/editar' => criarRota(ProfessorController::class, 'editar'),
     '/professores/excluir' => criarRota(ProfessorController::class, 'excluir'),
+
+    /*---- Rotas da API ----*/
+    '/api/alunos' => criarRota(AlunoApiController::class, 'getAll'),
+    '/api/usuarios' => criarRota(UserApiController::class, 'getAll'),
+    
+    /*----------------------*/
 ];
 
 return $rotas;

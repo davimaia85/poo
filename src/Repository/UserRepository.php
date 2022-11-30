@@ -30,7 +30,7 @@ class UserRepository
 
     public function findAll(): iterable
     {
-        $sql = 'SELECT * FROM ' .self::TABLE;
+        $sql = 'SELECT id, name, email, profile FROM ' .self::TABLE;
         $query =  $this->pdo->query($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_CLASS, User::class);
