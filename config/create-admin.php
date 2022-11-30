@@ -7,7 +7,7 @@ use App\Repository\UserRepository;
 use App\Model\User;
 
 $admin = new User();
-$admin->name = 'Administrados Padrão';
+$admin->name = 'Administrador Padrão';
 $admin->email = 'admin@admin.com';
 $admin->profile = 'admin';
 $admin->password = password_hash('123456', PASSWORD_ARGON2I);
